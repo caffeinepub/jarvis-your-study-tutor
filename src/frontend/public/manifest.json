@@ -1,0 +1,27 @@
+{
+  "name": "Jarvis - Your Study Tutor",
+  "short_name": "Jarvis",
+  "description": "Your AI-powered study tutor and super assistant",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#00ff88",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/file_000000006f9c71f88d2ac80e55328a9d.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/file_000000006f9c71f88d2ac80e55328a9d.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

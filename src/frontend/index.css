@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    /* Jarvis Dark Navy Theme - OKLCH */
+    --background: 0.13 0.015 250;
+    --foreground: 0.95 0.005 250;
+    --card: 0.16 0.018 250;
+    --card-foreground: 0.95 0.005 250;
+    --popover: 0.18 0.02 250;
+    --popover-foreground: 0.95 0.005 250;
+    --primary: 0.6 0.2 260;
+    --primary-foreground: 0.98 0 0;
+    --secondary: 0.2 0.02 250;
+    --secondary-foreground: 0.9 0.005 250;
+    --muted: 0.2 0.018 250;
+    --muted-foreground: 0.55 0.01 250;
+    --accent: 0.6 0.2 260;
+    --accent-foreground: 0.98 0 0;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.25 0.02 250;
+    --input: 0.22 0.02 250;
+    --ring: 0.6 0.2 260;
+    --jarvis-green: 0.75 0.18 150;
+    --jarvis-blue: 0.6 0.2 260;
+    --jarvis-surface: 0.16 0.018 250;
+    --jarvis-surface-2: 0.2 0.022 250;
+    --chart-1: 0.6 0.2 260;
+    --chart-2: 0.75 0.18 150;
+    --chart-3: 0.65 0.22 45;
+    --chart-4: 0.7 0.2 320;
+    --chart-5: 0.65 0.22 27;
+    --sidebar: 0.15 0.016 250;
+    --sidebar-foreground: 0.95 0.005 250;
+    --sidebar-primary: 0.6 0.2 260;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.2 0.02 250;
+    --sidebar-accent-foreground: 0.9 0.005 250;
+    --sidebar-border: 0.25 0.02 250;
+    --sidebar-ring: 0.6 0.2 260;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code, pre, .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--border));
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(var(--muted-foreground));
+}
+
+/* Animations */
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(0.75 0.18 150 / 0.4); }
+  50% { box-shadow: 0 0 0 8px oklch(0.75 0.18 150 / 0); }
+}
+
+@keyframes pulse-blue {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(0.6 0.2 260 / 0.4); }
+  50% { box-shadow: 0 0 0 8px oklch(0.6 0.2 260 / 0); }
+}
+
+@keyframes listening-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes typing-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+@keyframes timer-ring {
+  from { stroke-dashoffset: 283; }
+  to { stroke-dashoffset: 0; }
+}
+
+.animate-slide-in-right { animation: slide-in-right 0.3s ease-out; }
+.animate-slide-in-left { animation: slide-in-left 0.3s ease-out; }
+.animate-fade-in-up { animation: fade-in-up 0.4s ease-out; }
+.animate-listening { animation: listening-pulse 1.5s ease-in-out infinite; }
+.pulse-green { animation: pulse-green 2s infinite; }
+.pulse-blue { animation: pulse-blue 2s infinite; }
+
+.typing-dot-1 { animation: typing-dot 1.4s ease-in-out infinite 0s; }
+.typing-dot-2 { animation: typing-dot 1.4s ease-in-out infinite 0.2s; }
+.typing-dot-3 { animation: typing-dot 1.4s ease-in-out infinite 0.4s; }
+
+/* Glassmorphism card */
+.glass-card {
+  background: oklch(var(--card) / 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid oklch(var(--border) / 0.5);
+}
+
+/* Neon glow effects */
+.glow-blue {
+  box-shadow: 0 0 20px oklch(0.6 0.2 260 / 0.3), 0 0 40px oklch(0.6 0.2 260 / 0.1);
+}
+.glow-green {
+  box-shadow: 0 0 20px oklch(0.75 0.18 150 / 0.3), 0 0 40px oklch(0.75 0.18 150 / 0.1);
+}
+.text-glow-green {
+  text-shadow: 0 0 10px oklch(0.75 0.18 150 / 0.8), 0 0 20px oklch(0.75 0.18 150 / 0.4);
+}
+
+/* Markdown styles */
+.markdown-content h1, .markdown-content h2, .markdown-content h3 {
+  font-weight: 600;
+  margin: 0.75rem 0 0.4rem;
+  color: oklch(var(--foreground));
+}
+.markdown-content h1 { font-size: 1.25rem; }
+.markdown-content h2 { font-size: 1.1rem; }
+.markdown-content h3 { font-size: 1rem; }
+.markdown-content p { margin: 0.4rem 0; line-height: 1.6; }
+.markdown-content ul, .markdown-content ol { 
+  padding-left: 1.25rem; 
+  margin: 0.4rem 0;
+}
+.markdown-content li { margin: 0.2rem 0; }
+.markdown-content code {
+  background: oklch(0.12 0.02 250);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  color: oklch(0.75 0.18 150);
+}
+.markdown-content pre {
+  background: oklch(0.1 0.02 250);
+  border: 1px solid oklch(var(--border));
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+.markdown-content pre code {
+  background: none;
+  padding: 0;
+  color: oklch(0.9 0.005 250);
+  font-size: 0.85rem;
+}
+.markdown-content strong { color: oklch(var(--foreground)); font-weight: 600; }
+.markdown-content em { color: oklch(0.8 0.01 250); }
+.markdown-content blockquote {
+  border-left: 3px solid oklch(var(--primary));
+  padding-left: 0.75rem;
+  color: oklch(var(--muted-foreground));
+  margin: 0.5rem 0;
+}
+.markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0;
+  font-size: 0.875rem;
+}
+.markdown-content th, .markdown-content td {
+  border: 1px solid oklch(var(--border));
+  padding: 0.4rem 0.75rem;
+  text-align: left;
+}
+.markdown-content th {
+  background: oklch(var(--muted));
+  font-weight: 600;
+}
+
+/* Focus mode overlay */
+.focus-mode {
+  background: oklch(0.08 0.01 250 / 0.95);
+}
+
+/* Pomodoro circle */
+.pomodoro-ring {
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear;
+}
+
+/* Orbitron headings */
+.font-orbitron {
+  font-family: 'Orbitron', monospace;
+}
